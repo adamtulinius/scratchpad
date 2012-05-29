@@ -1,0 +1,13 @@
+$maybe auth <-ma
+  $if isAdmin $ entityVal auth
+    <h1>New resource
+    <form method=post enctype=#{enctype}>
+        ^{formWidget}
+        <input type=submit>
+
+<h1>Resources
+<ul>
+    $forall Entity _ resource <- resources
+        <li>
+            <a href=@{ResourceR $ resourceUrl resource}>
+                #{resourceTitle resource}
